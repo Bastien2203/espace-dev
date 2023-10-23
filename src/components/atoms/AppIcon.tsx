@@ -1,3 +1,7 @@
+import Image from "next/image";
+
 export const AppIcon = () => {
-  return <img src="/favicon.ico" className="w-10 h-10 invert" alt="app icon" />;
+  return (
+    <Image src="/favicon.ico" className="w-10 h-10 invert" alt="app icon" />
+  );
 };
