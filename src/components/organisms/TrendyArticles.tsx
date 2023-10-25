@@ -1,7 +1,7 @@
 import { Article } from "@prisma/client";
 import prisma from "@/db";
 
-export const ArticleList = async () => {
+export const TrendyArticles = async () => {
   const articles = await prisma.article.findMany({});
 
   return (
@@ -12,7 +12,7 @@ export const ArticleList = async () => {
           className="shadow py-2 px-4 rounded-lg flex flex-col hover:shadow-lg "
           key={_article.id}
         >
-          <h2>{_article.title}</h2>
+          <h3>{_article.title}</h3>
           <span>{_article.description}</span>
           <i className="self-end text-gray-400 text-sm">
             {_article.posted_at.toDateString()}
