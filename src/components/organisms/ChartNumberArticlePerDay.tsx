@@ -6,7 +6,16 @@ import { Article } from "@prisma/client";
 import { Bar } from "react-chartjs-2";
 
 export const ChartNumberArticlePerDay = (props: { articles: Article[] }) => {
-  const [chartConfig, setChartConfig] = useState(null);
+  const [chartConfig, setChartConfig] = useState<{
+    labels: number[];
+    datasets: {
+      label: string;
+      data: number[];
+      backgroundColor: string[];
+      borderColor: string;
+      borderWidth: number;
+    }[];
+  }>();
 
   useEffect(() => {
     const dayCountMap = new Map<number, number>();
@@ -38,24 +47,28 @@ export const ChartNumberArticlePerDay = (props: { articles: Article[] }) => {
         },
       ],
     });
-  }, []);
+  }, [props.articles]);
 
   if (chartConfig === null) {
     return <></>;
   }
 
   return (
-    <div className="chart-container">
-      <Bar
-        data={chartConfig}
-        options={{
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-        }}
-      />
-    </div>
+    <>
+      {chartConfig && (
+        <div className="chart-container">
+          <Bar
+            data={chartConfig}
+            options={{
+              plugins: {
+                legend: {
+                  display: false,
+                },
+              },
+            }}
+          />
+        </div>
+      )}
+    </>
   );
 };

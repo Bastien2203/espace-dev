@@ -9,7 +9,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="flex justify-around ">
+      <div className="flex justify-around">
         <div className="w-full px-10">
           <h2>Articles Tendances</h2>
           <div className="flex flex-col justify-center items-center mt-4">
@@ -20,7 +20,7 @@ export default async function Home() {
         </div>
 
         <div className="w-full px-10">
-          <h2>Nombres d'articles par jour</h2>
+          <h2>Nombres d&apos;articles par jour</h2>
           <div className="mt-4">
             <ChartNumberArticlePerDay articles={articles} />
           </div>
