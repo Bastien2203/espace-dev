@@ -16,3 +16,11 @@ model User {
   pseudo   String @unique
   password String
 }
+
+model Article {
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  content     String
+  description String
+  posted_at   DateTime @default(now())
+}
